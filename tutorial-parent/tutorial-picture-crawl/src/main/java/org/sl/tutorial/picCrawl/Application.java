@@ -15,7 +15,6 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 
 		Document doc = HttpUtils.readToDocument("http://www.meishij.net/zuofa/ganzhematitiantang_1.html");
-//		Document doc = HttpUtils.readToDocument("http://www.baidu.com");
 		Elements eList = HttpUtils.findElements(doc, ".cp_headerimg_w img");
 		IProcesser processer = new DefaultProcesserImpl();
 		processer.processElements(eList);
