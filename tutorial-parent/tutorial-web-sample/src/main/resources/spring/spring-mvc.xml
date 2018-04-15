@@ -29,4 +29,10 @@
 		<!-- 后缀 -->
 		<property name="suffix" value=".jsp" />
 	</bean>
+
+	<!-- 配置interceptor -->
+	<mvc:interceptors>
+		<!-- 使用 bean 定义一个 Interceptor，直接定义在 mvc:interceptors 下面的 Interceptor 将拦截所有的请求 -->
+		<bean class="org.sl.tutorial.web.sample.interceptor.SampleInterceptor" />
+	</mvc:interceptors>
 </beans>
