@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.sl.food.mapper.FoodEntityMapper" >
+  <resultMap id="BaseResultMap" type="org.sl.food.entity.FoodEntity" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="details_site" property="detailsSite" jdbcType="VARCHAR" />
+    <result column="picture" property="picture" jdbcType="VARCHAR" />
+    <result column="diffculte_level" property="diffculteLevel" jdbcType="INTEGER" />
+    <result column="taste_type" property="tasteType" jdbcType="VARCHAR" />
+    <result column="auther" property="auther" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, details_site, picture, diffculte_level, taste_type, auther, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_food
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_food
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.sl.food.entity.FoodEntity" >
+    insert into t_food (id, name, details_site, 
+      picture, diffculte_level, taste_type, 
+      auther, update_time)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{detailsSite,jdbcType=VARCHAR}, 
+      #{picture,jdbcType=VARCHAR}, #{diffculteLevel,jdbcType=INTEGER}, #{tasteType,jdbcType=VARCHAR}, 
+      #{auther,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="org.sl.food.entity.FoodEntity" >
+    insert into t_food
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="detailsSite != null" >
+        details_site,
+      </if>
+      <if test="picture != null" >
+        picture,
+      </if>
+      <if test="diffculteLevel != null" >
+        diffculte_level,
+      </if>
+      <if test="tasteType != null" >
+        taste_type,
+      </if>
+      <if test="auther != null" >
+        auther,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsSite != null" >
+        #{detailsSite,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null" >
+        #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="diffculteLevel != null" >
+        #{diffculteLevel,jdbcType=INTEGER},
+      </if>
+      <if test="tasteType != null" >
+        #{tasteType,jdbcType=VARCHAR},
+      </if>
+      <if test="auther != null" >
+        #{auther,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.sl.food.entity.FoodEntity" >
+    update t_food
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsSite != null" >
+        details_site = #{detailsSite,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null" >
+        picture = #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="diffculteLevel != null" >
+        diffculte_level = #{diffculteLevel,jdbcType=INTEGER},
+      </if>
+      <if test="tasteType != null" >
+        taste_type = #{tasteType,jdbcType=VARCHAR},
+      </if>
+      <if test="auther != null" >
+        auther = #{auther,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.sl.food.entity.FoodEntity" >
+    update t_food
+    set name = #{name,jdbcType=VARCHAR},
+      details_site = #{detailsSite,jdbcType=VARCHAR},
+      picture = #{picture,jdbcType=VARCHAR},
+      diffculte_level = #{diffculteLevel,jdbcType=INTEGER},
+      taste_type = #{tasteType,jdbcType=VARCHAR},
+      auther = #{auther,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

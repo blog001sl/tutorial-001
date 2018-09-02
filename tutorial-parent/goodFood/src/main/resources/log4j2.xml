@@ -17,6 +17,7 @@
 		<Root level="info">
 			<AppenderRef ref="STDOUT" />
 		</Root>
+		<logger name="org.sl.food" level="debug"/>
 	</Loggers>
 
 </Configuration>
