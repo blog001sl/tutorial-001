@@ -23,7 +23,7 @@ public class FoodCrawlTask {
 	@Autowired
 	private FoodEntityMapper foodMapper;
 	
-	@Scheduled(cron = "0/5 * *  * * ?")
+//	@Scheduled(cron = "0/5 * *  * * ?")
 	public void foodCrawl() {
 		try {
 			logger.info("starting......");
